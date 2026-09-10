@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Júlia Pantoja Chagas · Portfólio</title>
+<meta name="description" content="Portfólio de Ana Júlia Pantoja Chagas, estudante de Engenharia de Software em Manaus, AM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --paper: #F3F5F7;
+    --paper-alt: #E7ECF1;
+    --ink: #1B2733;
+    --ink-soft: #4B5A68;
+    --blue-deep: #1F3B57;
+    --blue-line: #3E6B91;
+    --amber: #C98A2C;
+    --amber-soft: rgba(201,138,44,0.14);
+    --border: rgba(31,59,87,0.22);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --max: 1040px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  h1,h2,h3{ font-family: var(--font-display); margin:0; color: var(--blue-deep); }
+  p{ margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
+  a{ color: var(--blue-deep); }
+  ul{ margin:0; padding:0; list-style:none; }
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+  /* Reusable ruler-tick rule: a strip of evenly spaced marks, used only
+     where a boundary/scale is meaningful (header base, footer top). */
+  .ruler{
+    height: 10px;
+    background-image: repeating-linear-gradient(
+      to right, var(--blue-line) 0 1px, transparent 1px 24px
+    );
+    background-position: left center;
+    opacity: 0.55;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position: sticky; top: 0; z-index: 20;
+    background: var(--paper);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 0;
+  }
+  .wordmark{
+    font-family: var(--font-display); font-weight:700; font-size:1.25rem;
+    color: var(--blue-deep); text-decoration:none; letter-spacing: 0.01em;
+  }
+  .wordmark span{ color: var(--amber); }
+  nav ul{ display:flex; gap: 28px; }
+  nav a{
+    text-decoration:none; color: var(--ink-soft); font-size: 0.95rem;
+    padding-bottom: 4px; border-bottom: 2px solid transparent;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  nav a.active, nav a:hover{ color: var(--blue-deep); border-color: var(--amber); }
+
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    width: 34px; height: 30px; background:none; border: none; cursor:pointer; padding:0;
+  }
+  .nav-toggle span{ display:block; height:2px; width:100%; background: var(--blue-deep); }
+
+  /* ---------- Hero / Sobre ---------- */
+  .hero{ padding: 56px 0 44px; }
+  .hero-grid{ display:flex; gap: 48px; align-items:flex-start; }
+  .hero-main{ flex: 1 1 560px; }
+  .eyebrow{ font-size: 0.85rem; color: var(--blue-line); margin-bottom: 10px; }
+  .hero h1{ font-size: clamp(1.9rem, 4vw, 2.7rem); line-height:1.15; margin-bottom: 10px; }
+  .hero .role{ font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 18px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 18px; }
+  .chip{
+    border: 1px solid var(--border); padding: 6px 12px; font-size: 0.85rem;
+    color: var(--blue-deep); background: #fff;
+  }
+  .chip strong{ color: var(--amber); }
+
+  .id-card{
+    flex: 0 0 260px; border: 1px solid var(--border); background:#fff; padding: 24px;
+  }
+  .avatar{
+    width: 76px; height: 76px; border-radius: 50%;
+    border: 2px solid var(--blue-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-display); font-weight:700; font-size:1.5rem;
+    color: var(--blue-deep); margin-bottom: 18px; position:relative;
+  }
+  .avatar::after{
+    content:""; position:absolute; width:6px; height:6px; background: var(--amber);
+    border-radius:50%; top:-3px; right:6px;
+  }
+  .id-card dl{ margin:0; }
+  .id-card .row{ display:flex; justify-content:space-between; gap:12px; padding: 9px 0; border-top: 1px solid var(--border); font-size: 0.85rem; }
+  .id-card .row:first-of-type{ border-top:none; }
+  .id-card dt{ color: var(--ink-soft); }
+  .id-card dd{ margin:0; text-align:right; color: var(--ink); font-weight:500; }
+
+  /* ---------- Sections ---------- */
+  section{ padding: 52px 0; border-top: 1px solid var(--border); }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom: 28px; }
+  .section-head .index{ font-family: var(--font-display); color: var(--amber); font-size:0.95rem; }
+  .section-head h2{ font-size: 1.5rem; }
+  .section-intro{ margin-bottom: 28px; }
+
+  /* Skills */
+  .skills-block{ margin-bottom: 36px; }
+  .skills-block h3{ font-size: 1rem; color: var(--ink-soft); font-weight:600; margin-bottom:16px; }
+  .gauge-list{ display:flex; flex-direction:column; gap:16px; max-width: 520px; }
+  .gauge-item .top-row{ display:flex; justify-content:space-between; font-size:0.9rem; margin-bottom:6px; }
+  .gauge-item .top-row strong{ color: var(--ink); font-weight:600; }
+  .gauge-item .top-row span{ color: var(--ink-soft); }
+  .track{ position:relative; height:8px; background: var(--paper-alt); border:1px solid var(--border); overflow:hidden; }
+  .track::before, .track::after{
+    content:""; position:absolute; top:0; bottom:0; width:2px; background: var(--paper); z-index:2;
+  }
+  .track::before{ left: 33.33%; }
+  .track::after{ left: 66.66%; }
+  .fill{ position:absolute; inset:0 auto 0 0; height:100%; background: var(--amber); }
+
+  .card-grid{ display:flex; flex-wrap:wrap; gap:16px; }
+  .skill-card{
+    flex: 1 1 220px; border: 1px solid var(--border); background:#fff; padding: 18px 20px;
+  }
+  .skill-card h4{ font-family: var(--font-body); font-size: 1rem; font-weight:600; color: var(--blue-deep); margin: 0 0 6px; }
+  .skill-card p{ font-size: 0.88rem; margin:0; }
+
+  /* Experience timeline */
+  .timeline{ border-left: 1px solid var(--blue-line); padding-left: 28px; display:flex; flex-direction:column; gap:30px; margin-left: 4px; }
+  .timeline li{ position:relative; }
+  .timeline li::before{
+    content:""; position:absolute; left:-33px; top:4px; width:9px; height:9px;
+    background: var(--paper); border: 2px solid var(--amber);
+  }
+  .timeline .dates{ font-size: 0.82rem; color: var(--blue-line); margin-bottom:2px; }
+  .timeline h4{ font-family: var(--font-body); font-size: 1rem; font-weight:600; color: var(--ink); margin:0 0 2px; }
+  .timeline .org{ font-size: 0.88rem; color: var(--ink-soft); margin-bottom:6px; }
+  .timeline p{ font-size: 0.88rem; margin:0; }
+
+  /* Contact */
+  .contact-grid{ display:flex; flex-wrap:wrap; gap: 40px; }
+  .contact-list{ flex: 1 1 320px; }
+  .contact-list .row{
+    display:flex; justify-content:space-between; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border);
+  }
+  .contact-list .row:first-of-type{ border-top:none; }
+  .contact-list dt{ color: var(--ink-soft); font-size:0.85rem; }
+  .contact-list dd{ margin:0; font-weight:500; }
+  .contact-list a{ text-decoration:none; }
+  .contact-list a:hover{ color: var(--amber); }
+  .contact-note{ flex: 1 1 260px; border: 1px solid var(--border); background:#fff; padding: 20px; font-size: 0.88rem; }
+  .contact-note strong{ color: var(--blue-deep); }
+
+  /* ---------- Footer ---------- */
+  footer{ padding: 26px 0 34px; }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding-top:18px; }
+  .footer-row small{ color: var(--ink-soft); font-size:0.82rem; }
+  .footer-links{ display:flex; gap:18px; }
+  .footer-links a{ font-size:0.82rem; text-decoration:none; color: var(--ink-soft); }
+  .footer-links a:hover{ color: var(--amber); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px){
+    nav ul{
+      position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0;
+      background: var(--paper); border-top: 1px solid var(--border);
+      max-height:0; overflow:hidden; transition: max-height .2s ease;
+    }
+    nav ul.open{ max-height: 260px; }
+    nav a{ display:block; padding: 14px 28px; border-bottom: 1px solid var(--border); }
+    .nav-toggle{ display:flex; }
+    .hero-grid{ flex-direction:column; }
+    .id-card{ flex-basis:auto; width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a href="#topo" class="wordmark">AJ<span>·</span>PC</a>
+    <nav>
+      <ul id="navList">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="ruler"></div>
+</header>
+
+<main id="topo">
+
+  <!-- Hero -->
+  <section class="hero" style="border-top:none;">
+    <div class="wrap hero-grid">
+      <div class="hero-main">
+        <p class="eyebrow">Manaus, AM — Brasil</p>
+        <h1>Ana Júlia Pantoja Chagas</h1>
+        <p class="role">Estudante de Engenharia de Software</p>
+        <p>Curso Engenharia de Software na CEUNI-Fametro e já passei por cartório, escritório de advocacia, farmácia e lan house — sempre em funções de atendimento e organização. Estou buscando um estágio em Tecnologia da Informação, e sigo aberta também a oportunidades administrativas, unindo raciocínio lógico com organização documental.</p>
+        <div class="chips">
+          <span class="chip">Perfil <strong>ISTJ</strong></span>
+          <span class="chip">Organizada</span>
+          <span class="chip">Metódica</span>
+          <span class="chip">Prática</span>
+        </div>
+      </div>
+      <aside class="id-card">
+        <div class="avatar">AJ</div>
+        <dl>
+          <div class="row"><dt>Formação</dt><dd>Eng. de Software — 5° período</dd></div>
+          <div class="row"><dt>Instituição</dt><dd>CEUNI-Fametro</dd></div>
+          <div class="row"><dt>Conclusão prevista</dt><dd>Dez/2028</dd></div>
+          <div class="row"><dt>Idiomas</dt><dd>Inglês — Intermediário</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <div class="wrap">
+      <div class="section-head"><span class="index">01</span><h2>Sobre mim</h2></div>
+      <div class="section-intro">
+        <p>Sou movida por rotina e método: gosto de saber exatamente o que precisa ser feito e de entregar isso dentro do prazo. Essa característica apareceu em cada função que já ocupei — da organização de processos em cartório ao suporte administrativo em escritório de advocacia — e é também o que me atrai na programação: transformar um problema em passos claros e verificáveis.</p>
+        <p>Estou no 5° período de Engenharia de Software e busco unir essa base técnica, ainda em construção, com a experiência prática que já tenho em atendimento ao público, organização documental e rotinas de escritório.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Habilidades -->
+  <section id="habilidades">
+    <div class="wrap">
+      <div class="section-head"><span class="index">02</span><h2>Habilidades</h2></div>
+
+      <div class="skills-block">
+        <h3>Técnicas</h3>
+        <ul class="gauge-list">
+          <li class="gauge-item">
+            <div class="top-row"><strong>C / C++</strong><span>Intermediário</span></div>
+            <div class="track"><div class="fill" style="width:66.66%"></div></div>
+          </li>
+          <li class="gauge-item">
+            <div class="top-row"><strong>Python</strong><span>Intermediário</span></div>
+            <div class="track"><div class="fill" style="width:66.66%"></div></div>
+          </li>
+          <li class="gauge-item">
+            <div class="top-row"><strong>C#</strong><span>Básico</span></div>
+            <div class="track"><div class="fill" style="width:33.33%"></div></div>
+          </li>
+          <li class="gauge-item">
+            <div class="top-row"><strong>HTML / CSS</strong><span>Básico</span></div>
+            <div class="track"><div class="fill" style="width:33.33%"></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skills-block">
+        <h3>Administrativas e interpessoais</h3>
+        <div class="card-grid">
+          <div class="skill-card">
+            <h4>Atendimento ao público</h4>
+            <p>Experiência direta em cartório, farmácia e lan house.</p>
+          </div>
+          <div class="skill-card">
+            <h4>Organização documental</h4>
+            <p>Organização, digitalização e protocolo de documentos.</p>
+          </div>
+          <div class="skill-card">
+            <h4>Suporte administrativo</h4>
+            <p>Rotinas de escritório em ambiente jurídico.</p>
+          </div>
+          <div class="skill-card">
+            <h4>Controle de caixa</h4>
+            <p>Gestão de caixa e de tempo de acesso de usuários.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiência -->
+  <section id="experiencia">
+    <div class="wrap">
+      <div class="section-head"><span class="index">03</span><h2>Experiência</h2></div>
+      <ul class="timeline">
+        <li>
+          <p class="dates">03/2025 – 05/2026</p>
+          <h4>Estágio — Robustelli Advocacia</h4>
+          <p class="org">Manaus, AM</p>
+          <p>Organização e digitalização de documentos; suporte administrativo ao escritório.</p>
+        </li>
+        <li>
+          <p class="dates">02/2024 – 12/2024</p>
+          <h4>Estágio — Cartório Extrajudicial da Comarca de Barcelos</h4>
+          <p class="org">Barcelos, AM</p>
+          <p>Atendimento ao público, organização e digitalização de documentos, auxílio em registros e protocolos.</p>
+        </li>
+        <li>
+          <p class="dates">2023 · 3 meses</p>
+          <h4>Estágio — Drogaria Oliveira</h4>
+          <p class="org">Barcelos, AM</p>
+          <p>Atendimento ao público em ambiente comercial.</p>
+        </li>
+        <li>
+          <p class="dates">2022 · 6 meses</p>
+          <h4>Atendente / Monitora — Acesse Wi-Fi</h4>
+          <p class="org">Barcelos, AM</p>
+          <p>Atendimento e suporte a usuários de computadores; controle de caixa e de tempo de acesso.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="wrap">
+      <div class="section-head"><span class="index">04</span><h2>Contato</h2></div>
+      <div class="contact-grid">
+        <dl class="contact-list">
+          <div class="row"><dt>E-mail</dt><dd><a href="mailto:anajulia.pchagas@gmail.com">anajulia.pchagas@gmail.com</a></dd></div>
+          <div class="row"><dt>Telefone</dt><dd><a href="tel:+5597984188306">(97) 98418-8306</a></dd></div>
+          <div class="row"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/ana-júlia-pantoja-chagas-570b1b2a3" target="_blank" rel="noopener">/ana-júlia-pantoja-chagas</a></dd></div>
+          <div class="row"><dt>GitHub</dt><dd><a href="https://github.com/deceased-Akira" target="_blank" rel="noopener">/deceased-Akira</a></dd></div>
+          <div class="row"><dt>Localização</dt><dd>Manaus, AM — Brasil</dd></div>
+        </dl>
+        <div class="contact-note">
+          <strong>Disponibilidade</strong>
+          <p style="margin-top:8px;">Aberta a estágios em Tecnologia da Informação e também a oportunidades na área administrativa. Retorno mensagens por e-mail ou LinkedIn em até um dia útil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="ruler"></div>
+  <div class="wrap footer-row">
+    <small>© <span id="year"></span> Ana Júlia Pantoja Chagas</small>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/ana-júlia-pantoja-chagas-570b1b2a3" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/deceased-Akira" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:anajulia.pchagas@gmail.com">E-mail</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Ano dinâmico no rodapé
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Menu mobile
+  var navToggle = document.getElementById('navToggle');
+  var navList = document.getElementById('navList');
+  navToggle.addEventListener('click', function(){
+    var isOpen = navList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navList.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ navList.classList.remove('open'); });
+  });
+
+  // Destaca o link de navegação da seção visível
+  var sections = document.querySelectorAll('main section[id]');
+  var navLinks = document.querySelectorAll('nav a');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        navLinks.forEach(function(l){ l.classList.remove('active'); });
+        var active = document.querySelector('nav a[href="#' + entry.target.id + '"]');
+        if(active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(function(s){ observer.observe(s); });
+</script>
+
+</body>
+</html>
