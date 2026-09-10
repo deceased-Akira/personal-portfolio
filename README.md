@@ -14,7 +14,3 @@ Experiência · Contato · Footer.
 - LinkedIn: https://www.linkedin.com/in/ana-júlia-pantoja-chagas-570b1b2a3
 - GitHub: https://github.com/deceased-Akira
 
-## Para publicar (opcional)
-1. Criar um repositório novo no GitHub e enviar este projeto.
-2. Em **Settings → Pages**, ativar o GitHub Pages a partir da branch principal.
-3. O link publicado ficará em `https://deceased-akira.github.io/NOME-DO-REPOSITORIO/`.
